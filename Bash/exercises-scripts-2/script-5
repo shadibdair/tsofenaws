@@ -1,0 +1,27 @@
+#!/bin/bash -i
+#
+while true :
+read -p "Enter a file name for a little scanning: " file
+do 
+    if [ ! -f $file ]; then
+        echo "file doesn't exist!"
+        break
+    else
+        longest=0
+        for word in $(<$file)
+        do
+            len=${#word}
+            if (( len > longest ))
+            then
+                longest=$len
+                longword=$word
+            fi
+        done
+        echo "Longest word -> ${longword} - Length -> ${longest}"
+    fi
+    break
+done
+
+# Added the script as interactively mode.
+# Only run " script-5 "
+alias script-5="./script-5"

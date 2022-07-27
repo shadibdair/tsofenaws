@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# If the num file exist delete it and start from zero.
+if [ -f num ]; then
+  rm -r num
+fi
+# Loop over the file names
+for f in *; 
+do
+  if [ -f "$f" ]; then
+      # All the letter include numbers, specile special characters...
+      #echo -n "$f" | wc -c >> num
+      # Only the letter "alphabet"
+      echo "$f" | grep -o "[a-zA-Z]" | wc -l >> num
+  fi
+done
+echo "Sum of all the letters filenames:"
+awk '{ sum += $1 } END { print sum }' num

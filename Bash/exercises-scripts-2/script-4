@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+read -p "Enter a directory you want to delete: " dir
+rmdir $dir
+if [ -d $dir ]; then
+    cd $dir
+    rm -r *
+    cd ..
+fi
+rmdir $dir
+echo "Success to delete the directory!"
